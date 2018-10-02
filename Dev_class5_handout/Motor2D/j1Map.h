@@ -12,15 +12,15 @@ typedef unsigned int uint;
 // ----------------------------------------------------
 struct MapLayer
 {
-	p2SString			name; 
-	uint				width; 
-	uint				height; 
-	uint*				data = nullptr; 
+	p2SString			name;
+	uint				width;
+	uint				height;
+	uint*				data = nullptr;
 
 	~MapLayer()
 	{
 		if (data != nullptr)
-			delete data; 
+			delete data;
 	}
 
 	inline uint Get(int x, int y) const
@@ -28,7 +28,7 @@ struct MapLayer
 		return x + (y * width);
 	}
 };
-	// TODO 6: Short function to get the value of x,y
+// TODO 6: Short function to get the value of x,y
 
 
 
