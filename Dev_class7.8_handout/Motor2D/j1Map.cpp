@@ -52,12 +52,17 @@ void j1Map::Path(int x, int y)
 	// add each step into "path" dyn array (it will then draw automatically)
 	path.PushBack(goal); 
 
-	while (goal != visited.start->data)
+	if (visited.At(visited.find(goal)) != nullptr)
 	{
-		goal = breadcrumbs.At(visited.find(goal))->data; 
-		path.PushBack(goal); 
-	} 
-	path.PushBack(visited.start->data); 
+
+		while (goal != visited.start->data && breadcrumbs.At(visited.find(goal)) != nullptr)
+		{
+			goal = breadcrumbs.At(visited.find(goal))->data;
+				path.PushBack(goal);
+		}
+		path.PushBack(visited.start->data);
+	}
+
 }
 
 void j1Map::PropagateDijkstra()
